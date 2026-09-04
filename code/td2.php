@@ -34,4 +34,26 @@ function carre(int|float $x, int $n){
     return $res;
 }
 
-echo carre(2, 3);
+//echo carre(2, 3);
+
+function routeur($choix, $p1, $p2) {
+    switch ($choix) {
+        case 1:
+            if (is_numeric($p1) && is_numeric($p2)) {
+                return plus_grand($p1, $p2);
+            }
+            break;
+        case 2:
+            if (is_int($p1) && is_int($p2)) {
+                entier($p1, $p2);
+            }
+            break;
+        case 3:
+            if (is_numeric($p1) && is_int($p2)) {
+                return puissance($p1, $p2);
+            }
+            break;
+    }
+}
+
+echo routeur(1, 10, 42.5);
