@@ -1,5 +1,8 @@
 <?php
 
+require_once 'InvalidPropertyNameException.php';
+require_once 'InvalidPropertyValueException.php';
+
 class AudioTrack {
     protected string $titre;
     protected string $genre;
@@ -15,18 +18,21 @@ class AudioTrack {
         return json_encode(get_object_vars($this));
     }
 
-public function __get(string $attrname): mixed {
+    public function __get(string $attrname): mixed {
         if (property_exists($this, $attrname)) {
             return $this->$attrname;
         }
-        throw new Exception("invalid property: " . $attrname);
+        throw new InvalidPropertyNameException("invalid property: " . $attrname);
     }
 
     public function setGenre(string $genre): void {
         $this->genre = $genre;
     }
 
-    public function setDuree(int $duree): void {
+    public function setDuree(int $duree): void {   
+        if ($duree <= 0) {
+            throw new InvalidPropertyValueException("Durée invalide : " . $duree . " (doit être > 0)");
+        }
         $this->duree = $duree;
     }
 }
