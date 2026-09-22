@@ -70,6 +70,7 @@ echo "<h3>Podcast - Mode long :</h3>";
 echo $podcastRenderer->render(Renderer::LONG);
 */
 
+/*
 try {
     $piste = new AudioTrack("Test", "audio/test.mp3");
     
@@ -80,3 +81,15 @@ try {
     echo "<strong>Erreur :</strong> " . $e->getMessage() . "<br>\n";
     echo "<strong>Trace :</strong><pre>" . $e->getTraceAsString() . "</pre>";
 }
+*/
+
+require_once 'Playlist.php';
+require_once 'AudioListRenderer.php';
+
+$maPlaylist = new Playlist("Ma super playlist");
+$maPlaylist->addTrack($t1);
+$maPlaylist->addTrack($t2);
+$maPlaylist->addTrack($podcast);
+
+$listRenderer = new AudioListRenderer($maPlaylist);
+echo $listRenderer->render();
