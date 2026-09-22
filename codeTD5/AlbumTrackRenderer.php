@@ -13,10 +13,10 @@ public function __construct(AlbumTrack $album){
 
 public function render(int $selector): string{
     switch ($selector){
-        case self::Compact:
-            return $this -> renderCompact;
-        case self::Long:
-            return $this -> renderLong;
+        case self::COMPACT:
+            return $this -> renderCompact();
+        case self::LONG:
+            return $this -> renderLong();
         default:
             return "<p>Mode d'affichage inconnu.</p>";
     }
