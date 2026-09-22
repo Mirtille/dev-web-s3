@@ -1,9 +1,25 @@
 <?php
+require_once 'src/classes/InvalidPropertyNameException.php';
+require_once 'src/classes/InvalidPropertyValueException.php';
+require_once 'src/classes/AudioTrack.php';
+require_once 'src/classes/AlbumTrack.php';
+require_once 'src/classes/PodcastTrack.php';
+require_once 'src/classes/Renderer.php';
+require_once 'src/classes/AlbumTrackRenderer.php';
+require_once 'src/classes/PodcastRenderer.php';
+require_once 'src/classes/AudioList.php';
+require_once 'src/classes/Playlist.php';
+require_once 'src/classes/AudioListRenderer.php';
 
-require_once 'AlbumTrack.php';
-require_once 'AlbumTrackRenderer.php';
-require_once 'PodcastTrack.php';
-require_once 'PodcastRenderer.php';
+use iutnc\deefy\render\AlbumTrackRenderer;
+use iutnc\deefy\render\PodcastRenderer;
+use iutnc\deefy\audio\tracks\AlbumTrack;
+use iutnc\deefy\audio\tracks\PodcastTrack;
+use iutnc\deefy\audio\lists\Playlist;
+use iutnc\deefy\render\Renderer;
+use iutnc\deefy\render\AudioListRenderer;
+use iutnc\deefy\exception\InvalidPropertyNameException;
+use iutnc\deefy\exception\InvalidPropertyValueException;
 
 
 $t1 = new AlbumTrack("Thriller", "audio/thriller.mp3", "Thriller", 4);
@@ -82,9 +98,6 @@ try {
     echo "<strong>Trace :</strong><pre>" . $e->getTraceAsString() . "</pre>";
 }
 */
-
-require_once 'Playlist.php';
-require_once 'AudioListRenderer.php';
 
 $maPlaylist = new Playlist("Ma super playlist");
 $maPlaylist->addTrack($t1);
