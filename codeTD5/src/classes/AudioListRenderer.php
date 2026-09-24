@@ -1,15 +1,8 @@
 <?php
-namespace iutnc\deefy\render;
-use iutnc\deefy\audio\tracks\AlbumTrack;
-use iutnc\deefy\audio\tracks\PodcastTrack;
-use iutnc\deefy\audio\lists\AudioList;
 
-require_once 'Renderer.php';
-require_once 'AudioList.php';
-require_once 'AlbumTrack.php';
-require_once 'AlbumTrackRenderer.php';
-require_once 'PodcastTrack.php';
-require_once 'PodcastRenderer.php';
+namespace iutnc\deefy\render;
+
+use iutnc\deefy\audio\lists\AudioList;
 
 class AudioListRenderer implements Renderer {
     private AudioList $audioList;
@@ -23,14 +16,10 @@ class AudioListRenderer implements Renderer {
         $html .= "  <h2>Liste : {$this->audioList->nom}</h2>\n";
         $html .= "  <div class='tracks'>\n";
 
-        foreach ($this->audioList->pistes as $piste) {
-            if ($piste instanceof AlbumTrack) {
-                $renderer = new AlbumTrackRenderer($piste);
-            } elseif ($piste instanceof PodcastTrack) {
-                $renderer = new PodcastRenderer($piste);
-            } else {
-                continue;
-            }
+        // On utilise la boucle directement sur $audioList (Iterator)
+        // et la factory pour obtenir le bon renderer
+        foreach ($this->audioList as $piste) {
+            $renderer = RendererFactory::getRenderer($piste);
             $html .= $renderer->render(Renderer::COMPACT);
         }
 

@@ -10,7 +10,9 @@ require_once 'src/classes/PodcastRenderer.php';
 require_once 'src/classes/AudioList.php';
 require_once 'src/classes/Playlist.php';
 require_once 'src/classes/AudioListRenderer.php';
+require_once 'src/classes/RendererFactory.php';
 
+use iutnc\deefy\render\RendererFactory;
 use iutnc\deefy\render\AlbumTrackRenderer;
 use iutnc\deefy\render\PodcastRenderer;
 use iutnc\deefy\audio\tracks\AlbumTrack;
@@ -105,4 +107,15 @@ $maPlaylist->addTrack($t2);
 $maPlaylist->addTrack($podcast);
 
 $listRenderer = new AudioListRenderer($maPlaylist);
+/*
 echo $listRenderer->render();
+
+echo "<h3>Parcours avec Iterator :</h3>";
+foreach ($maPlaylist as $track) {
+    echo $track->titre . "<br>\n";
+}
+    */
+
+echo "<h3>Test avec RendererFactory :</h3>";
+$rendu = RendererFactory::getRenderer($maPlaylist);
+echo $rendu->render();
