@@ -28,4 +28,24 @@ class AudioList {
         }
         throw new InvalidPropertyNameException("Propriété inconnue : " . $attrname);
     }
+
+    public function current(): mixed {
+        return $this->pistes[$this->index];
+    }
+
+    public function key(): mixed {
+        return $this->index;
+    }
+
+    public function next(): void {
+        $this->index++;
+    }
+
+    public function rewind(): void {
+        $this->index = 0;
+    }
+
+    public function valid(): bool {
+        return isset($this->pistes[$this->index]);
+    }
 }
