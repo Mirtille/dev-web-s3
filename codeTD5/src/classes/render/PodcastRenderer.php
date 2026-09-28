@@ -4,9 +4,6 @@ use iutnc\deefy\audio\tracks\AlbumTrack;
 use iutnc\deefy\audio\tracks\PodcastTrack;
 use iutnc\deefy\audio\lists\AudioList;
 
-require_once 'PodcastTrack.php';
-require_once 'Renderer.php';
-
 class PodcastRenderer implements Renderer {
     private PodcastTrack $podcast;
 

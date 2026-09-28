@@ -3,9 +3,6 @@ namespace iutnc\deefy\audio\lists;
 use iutnc\deefy\audio\tracks\AudioTrack;
 use iutnc\deefy\exception\InvalidPropertyNameException;
 
-require_once 'AudioTrack.php';
-require_once 'InvalidPropertyNameException.php';
-
 class AudioList {
     protected string $nom;
     protected int $nbPistes = 0;

@@ -1,17 +1,11 @@
 <?php
 
-require_once 'src/classes/InvalidPropertyNameException.php';
-require_once 'src/classes/InvalidPropertyValueException.php';
-require_once 'src/classes/AudioTrack.php';
-require_once 'src/classes/AlbumTrack.php';
-require_once 'src/classes/PodcastTrack.php';
-require_once 'src/classes/Renderer.php';
-require_once 'src/classes/AlbumTrackRenderer.php';
-require_once 'src/classes/PodcastRenderer.php';
-require_once 'src/classes/AudioList.php';
-require_once 'src/classes/Playlist.php';
-require_once 'src/classes/AudioListRenderer.php';
-require_once 'src/classes/RendererFactory.php';
+require_once 'src/loader/Psr4ClassLoader.php';
+
+//$loader = new \loader\Psr4ClassLoader("iutnc\\deefy\\", "src/classes");
+//$loader->register();
+
+require_once 'vendor/autoload.php';
 
 use iutnc\deefy\render\RendererFactory;
 use iutnc\deefy\audio\tracks\AudioTrack;

@@ -5,9 +5,6 @@ use iutnc\deefy\audio\tracks\PodcastTrack;
 use iutnc\deefy\audio\lists\AudioList;
 use iutnc\deefy\audio\tracks\AudioTrack;
 
-require_once 'AlbumTrack.php';
-require_once 'Renderer.php';
-
 class AlbumTrackRenderer implements Renderer {
 
     protected AlbumTrack $track;
