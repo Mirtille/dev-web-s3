@@ -3,6 +3,7 @@ namespace iutnc\deefy\render;
 use iutnc\deefy\audio\tracks\AlbumTrack;
 use iutnc\deefy\audio\tracks\PodcastTrack;
 use iutnc\deefy\audio\lists\AudioList;
+use iutnc\deefy\audio\tracks\AudioTrack;
 
 require_once 'AlbumTrack.php';
 require_once 'Renderer.php';
@@ -38,7 +39,7 @@ class AlbumTrackRenderer implements Renderer {
                "<h2>{$this->track->numero}. {$this->track->titre}</h2>" .
                "<p>Artiste : {$this->track->artiste}</p>" .
                "<p>Album : {$this->track->album} ({$this->track->annee})</p>" .
-               "<p>Genre : {$this->track->genre} | Durée : {$this->track->duree} s</p>" .
+               "<p>Genre : " . AudioTrack::getGenreAsString($this->track->genre) . " | Durée : {$this->track->duree} s</p>" .
                "<audio controls src='{$this->track->fichierAudio}'></audio>" .
                "</div>";
     }
