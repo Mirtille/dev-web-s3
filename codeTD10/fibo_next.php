@@ -16,4 +16,4 @@ $next = $u1 + $u2;
 
 $_SESSION['fibo'][] = $next;
 
-echo "Valeur courante : " . $next . "<br>";[cite: 6]
+echo "Valeur courante : " . $next . "<br>";
