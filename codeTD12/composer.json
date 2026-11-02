@@ -1,0 +1,10 @@
+{
+  "name": "iutnc/deefy",
+  "description": "Application Deefy - BUT Informatique",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "iutnc\\deefy\\": "src/classes/"
+    }
+  }
+}
