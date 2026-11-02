@@ -2,42 +2,34 @@
 
 namespace iutnc\deefy\dispatch;
 
+use iutnc\deefy\action\Action;
 use iutnc\deefy\action\DefaultAction;
-use iutnc\deefy\action\DisplayPlaylistAction;
-use iutnc\deefy\action\AddPlaylistAction;
-use iutnc\deefy\action\AddPodcastTrackAction;
 
 class Dispatcher {
-    private string $action;[cite: 1, 3]
+    private string $action;
+    private array $routes = [];
 
     public function __construct() {
-        // Si ?action=... n'est pas renseigné, on charge 'default'
-        $this->action = $_GET['action'] ?? 'default';[cite: 1, 3]
+        $this->action = $_GET['action'] ?? 'default';
+    }
+
+    public function addRoute(string $action, string $class): self {
+        $this->routes[$action] = $class;
+        return $this;
     }
 
     public function run(): void {
-        // 1. Sélection de l'action selon la valeur du paramètre
-        switch ($this->action) {
-            case 'playlist':
-                $act = new DisplayPlaylistAction();[cite: 1, 3]
-                break;
-            case 'add-playlist':
-                $act = new AddPlaylistAction();[cite: 1, 3]
-                break;
-            case 'add-track':
-                $act = new AddPodcastTrackAction();[cite: 1, 3]
-                break;
-            case 'default':
-            default:
-                $act = new DefaultAction();[cite: 1, 3]
-                break;
+        // Si l'action est enregistrée dans les routes, on instancie la classe correspondante
+        if (isset($this->routes[$this->action])) {
+            $class = $this->routes[$this->action];
+            $act = new $class();
+        } else {
+            // Repli sur l'action par défaut
+            $act = new DefaultAction();
         }
 
-        // 2. Exécution de l'action pour récupérer le fragment HTML
-        $html = $act->execute();[cite: 1, 2, 3, 4]
-
-        // 3. Transmission du fragment à la méthode d'affichage
-        $this->renderPage($html);[cite: 2, 4]
+        $html = $act->execute();
+        $this->renderPage($html);
     }
 
     private function renderPage(string $html): void {
