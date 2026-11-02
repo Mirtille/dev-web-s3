@@ -39,26 +39,22 @@ class Dispatcher {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Deefy App</title>
+            <title>Deefy</title>
         </head>
         <body>
             <header>
-                <h1>Deefy Music</h1>
+                <h1>Deefy App</h1>
                 <nav>
                     <a href="?action=default">Accueil</a> |
-                    <a href="?action=playlist">Voir la Playlist</a> |
+                    <a href="?action=playlist">Voir Playlist</a> |
                     <a href="?action=add-playlist">Créer Playlist</a> |
-                    <a href="?action=add-track">Ajouter Track</a>
+                    <a href="?action=add-user">Inscription</a>
                 </nav>
                 <hr>
             </header>
             <main>
                 $html
             </main>
-            <footer>
-                <hr>
-                <p><small>&copy; Deefy App - BUT Informatique</small></p>
-            </footer>
         </body>
         </html>
         HTML;
